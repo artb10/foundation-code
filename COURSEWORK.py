@@ -74,39 +74,73 @@ for i in range(len(sales)):
 
 
 def menuPrint():
+
+    print('\n############### MENU ###############\
+          \n1- Employee list in order of sales\
+          \n2- Sales comission for each employee\
+          \n3- Total sales comission for the week\
+          \n4- Total number of sales in the week\
+          \n5- Employee of the week award\
+          \n6- Bonus amount received by employee of the week')
+    
+    choice = (input("Choose the option to be displayed: "))
+    while True:
+        try:
+              str(choice)
+              break
+        except:
+             print("Invalid input. Try again.")
+             choice = (input("Choose the option to be displayed: "))
+    
+
+
        
     #PRINTING THE EMPLOYEE LIST IN ORDER OF SALES
-    for i in range(len(employees)):
+    if choice == '1':
+        print('\n*******************************')
+        print("List of employees: ")
+        for i in range(len(employees)):
                 print(f'\nEmployee name: {employees[i]}\nEmployee ID: {employeeIdList[i]}\nSales: {sales[i]}')
 
     #PRINTING COMISSION FOR EACH EMPLOYEE
-    print('\n*******************************')
-    print("\nComissions: ")
-    for i in range(len(employees)):
-        print(f'\nEmployee: {employees[i]} \nComission: £{comissions[i]}')
+    elif choice == '2':
+        print('\n*******************************')
+        print("Comissions: ")
+        for i in range(len(employees)):
+            print(f'\nEmployee: {employees[i]} \nComission: £{comissions[i]}')
 
     #PRINTING THE TOTAL SALES COMISSION FOR THE WEEK
-    print('********************************')
-    print(f'\nTotal Comissions for the week: £{totalComission}')
+    elif choice == '3':
+        print('\n********************************')
+        print(f'Total Comissions for the week: £{totalComission}')
 
     #PRINTING THE TOTAL NUMBER OF PROPERTIES SOLD THIS WEEK
-    print('********************************')
-    print(f'\nTotal number of properties sold this week: {totalSales}')
+    elif choice == '4':
+        print('\n********************************')
+        print(f'Total number of properties sold this week: {totalSales}')
 
     #PRINTING EMPLOYEE OF THE WEEK'S INFORMATION
-    print('********************************')
-    print(f'\nEmployee of the week award: \
-            \nName: {employees[0]} \
-            \nID: {employeeIdList[0]} \
-            \nNumber of Sales: {sales[0]}\
-            \nBonus amount received by employee of the week: £{comissionBonus}')#
+    elif choice == '5':
+        print('\n********************************')
+        print(f'Employee of the week award: \
+                \nName: {employees[0]} \
+                \nID: {employeeIdList[0]} \
+                \nNumber of Sales: {sales[0]}')
+    elif choice == '6':
+        print(f'Bonus amount received by employee of the week: £{comissionBonus}')
     
-    #ASKING IF THE USER WISHES TO USE THE MENU AGAIN
-    menuCondition = input("Do you want to use the menu again? Y/N: ")
-    menuCondition = menuCondition.lower()
+    while(True):
+        menuCondition = input("Do you want to use the menu again? Y/N: ")
+        menuCondition = menuCondition.lower()
 
-    #IN CASE THE USER WANTS TO USE THE MENU AGAIN
-    if menuCondition == 'y':
+        if(menuCondition == 'y' or menuCondition == 'n'):
+            break
+        else:
+            print("Invalid input.")
+            continue
+    if menuCondition == 'n':
+        return
+    else:
         menuPrint()
 
 #CALLING THE MENU FUNCTION
