@@ -8,19 +8,54 @@ rankedSales = []
 rankedEmployees = []
 rankedEmployeeId = []
 
+#ASKING IF THERE ARE ANY NEW EMPLOYEES THIS WEEK
+newEmployeeAmount = int(input("Enter the amount of new employees: ")) 
 
-newEmployeeAmount = int(input("Enter the amount of new employees: ")) #ASKING IF THERE ARE ANY NEW EMPLOYEES THIS WEEK
+## Validating the input
+while True:
+    if newEmployeeAmount < 0:
+          print("Amount of new employees has to be bigger than zero.")
+          newEmployeeAmount = int(input("Enter the amount of new employees: "))
+          continue
+    else:
+         break
+
+
 for i in range(newEmployeeAmount + 5): # GETTING THE EMPLOYEES' INFORMATION
 
     employeeName = input("Enter the name of the employee: ")
-    employees.append(employeeName)
+    ## Validating the input
+    while True:
+        if len(employeeName) <= 1:
+            print("Name cannot have less than 2 characters.")
+            employeeName = input("Enter the name of the employee: ")
+            continue
+        else:
+            employees.append(employeeName)
+            break
 
     employeeId = int(input("Enter the ID of the employee: "))
-    employeeIdList.append(employeeId)
+    ## Validating the input
+    while True:
+        if employeeId in employeeIdList:
+            print("IDs cannot be repeated.")
+            employeeId = int(input("Enter the ID of the employee: "))
+            continue
+        else:
+            employeeIdList.append(employeeId)
+            break
 
 
     employeeSales = int(input("Enter the number of sales the employee made: "))
-    sales.append(employeeSales)
+    ## Validating the input
+    while True:
+        if employeeSales < 0:
+            print("An employee cannot have negative sales.")
+            employeeSales = int(input("Enter the number of sales the employee made: "))
+            continue
+        else:
+            sales.append(employeeSales)
+            break
 
 
 #RANKING THE LISTS AND GETTING THE TOP EMPLOYEE
@@ -127,6 +162,7 @@ def menuPrint():
                 \nID: {employeeIdList[0]} \
                 \nNumber of Sales: {sales[0]}')
     elif choice == '6':
+        print('\n********************************')
         print(f'Bonus amount received by employee of the week: £{comissionBonus}')
     
     while(True):
