@@ -34,12 +34,16 @@ for i in range(newEmployeeAmount + 5): # GETTING THE EMPLOYEES' INFORMATION
             employees.append(employeeName)
             break
 
-    employeeId = int(input("Enter the ID of the employee: "))
+    employeeId = (input("Enter the ID of the employee: "))
     ## Validating the input
     while True:
-        if employeeId in employeeIdList:
+        if employeeId == '' or employeeId == ' ':
+            print("ID cannot be empty.")
+            employeeId = (input("Enter the ID of the employee: "))
+            continue            
+        elif employeeId in employeeIdList:
             print("IDs cannot be repeated.")
-            employeeId = int(input("Enter the ID of the employee: "))
+            employeeId = (input("Enter the ID of the employee: "))
             continue
         else:
             employeeIdList.append(employeeId)
@@ -127,8 +131,6 @@ def menuPrint():
              print("Invalid input. Try again.")
              choice = (input("Choose the option to be displayed: "))
     
-
-
        
     #PRINTING THE EMPLOYEE LIST IN ORDER OF SALES
     if choice == '1':
@@ -137,6 +139,7 @@ def menuPrint():
         for i in range(len(employees)):
                 print(f'\nEmployee name: {employees[i]}\nEmployee ID: {employeeIdList[i]}\nSales: {sales[i]}')
 
+
     #PRINTING COMISSION FOR EACH EMPLOYEE
     elif choice == '2':
         print('\n*******************************')
@@ -144,15 +147,18 @@ def menuPrint():
         for i in range(len(employees)):
             print(f'\nEmployee: {employees[i]} \nComission: £{comissions[i]}')
 
+
     #PRINTING THE TOTAL SALES COMISSION FOR THE WEEK
     elif choice == '3':
         print('\n********************************')
         print(f'Total Comissions for the week: £{totalComission}')
 
+
     #PRINTING THE TOTAL NUMBER OF PROPERTIES SOLD THIS WEEK
     elif choice == '4':
         print('\n********************************')
         print(f'Total number of properties sold this week: {totalSales}')
+
 
     #PRINTING EMPLOYEE OF THE WEEK'S INFORMATION
     elif choice == '5':
@@ -164,6 +170,7 @@ def menuPrint():
     elif choice == '6':
         print('\n********************************')
         print(f'Bonus amount received by employee of the week: £{comissionBonus}')
+    
     
     while(True):
         menuCondition = input("Do you want to use the menu again? Y/N: ")
