@@ -23,7 +23,7 @@ while True:
 
 for i in range(newEmployeeAmount + 5): # GETTING THE EMPLOYEES' INFORMATION
 
-    employeeName = input("Enter the name of the employee: ")
+    employeeName = input("\nEnter the name of the employee: ")
     ## Validating the input
     while True:
         if len(employeeName) <= 1:
